@@ -5,7 +5,7 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
-    if (playerSection === computerSelection) {
+    if (playerSelection === computerSelection) {
         return ("Tie!");
     } else if (playerSelection === "rock") {
         if (computerSelection === "paper") {
@@ -25,5 +25,13 @@ function playRound(playerSelection, computerSelection){
         } else if (computerSelection === "paper") {
             return "You Win! Scissors beats paper";
         }
+    } else {
+        return "Oops! That's no valid input";
+    }
+}
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(prompt("Choose rock, paper or scissors"), computerPlay()));
     }
 }
