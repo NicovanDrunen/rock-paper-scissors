@@ -6,32 +6,44 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === computerSelection) {
-        return ("Tie!");
+        return ("Tie");
     } else if (playerSelection === "rock") {
         if (computerSelection === "paper") {
-            return "You Lose! Paper beats Rock";
+            return "Lose";
         } else if (computerSelection === "scissors") {
-            return "You Win! Rock beats Scissors";
+            return "Win";
         }
     } else if (playerSelection === "paper") {
         if (computerSelection === "scissors") {
-            return "You Lose! Scissors beats Paper";
+            return "Lose";
         } else if (computerSelection === "rock") {
-            return "You Win! Paper beats Rock";
+            return "Win";
         }
     } else if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
-            return "You Lose! Rock beats Scissors";
+            return "Lose";
         } else if (computerSelection === "paper") {
-            return "You Win! Scissors beats paper";
+            return "Win";
         }
     } else {
-        return "Oops! That's no valid input";
+        return "Error";
     }
 }
 
 function game() {
     for (let i = 0; i < 5; i++) {
-        console.log(playRound(prompt("Choose rock, paper or scissors"), computerPlay()));
+        let playerSelection = prompt("Choose rock, paper or scissors");
+        let computerSelection = computerPlay();
+        let outcome = playRound(playerSelection, computerSelection)
+        if (outcome === "Win") {
+            console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        } else if (outcome === "Lose") {
+            console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+        } else if (outcome === "Tie") {
+            console.log("Tie!")
+        } else if (outcome === "Error") {
+            console.log("Oops! That's no valid input");
+            i--;
+        }
     }
 }
